@@ -17,9 +17,9 @@ def create_server():
         from modules.api import portfolio 
         from modules.api import sustainability as sust
 
-        app.register_blueprint(news.news_api_bp, url_prefix="/api/news")
-        app.register_blueprint(portfolio.portfolio_api_bp, url_prefix="/api/portfolio")
-        app.register_blueprint(sust.sust_api_bp, url_prefix="/api/sustainability")
+        app.register_blueprint(news.news_api_bp)
+        app.register_blueprint(portfolio.portfolio_api_bp)
+        app.register_blueprint(sust.sust_api_bp)
 
         # app.register_error_handler(404,page_not_found)
         # app.register_error_handler(500,logic_error)
