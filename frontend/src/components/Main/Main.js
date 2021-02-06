@@ -4,12 +4,18 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import rocketImage from '../../Images/rocket.png'
+import environmentImage from '../../Images/environment.PNG'
+import socialImage from '../../Images/social.PNG'
+import governanceImage from '../../Images/company.png'
+
 import { Grid } from '@material-ui/core';
 import Slide from '@material-ui/core/Slide';
 
 
 const useStyles = makeStyles((theme) => ({
+    // background: {
+    //     backgroundImage: leafImage
+    // },
     header: {
         width: '100%',
         marginTop: theme.spacing(6),
@@ -35,13 +41,13 @@ export const Main = () => {
     const classes = useStyles();
 
     return (
-        <div>
+        <div className={classes.background}>
             <div className={classes.header}>
                 <Typography variant="h2" component="h2" gutterBottom>
-                    Build your Portfolio
+                    Build your ESG Portfolio
                 </Typography>
                 <Typography variant="subtitle1" gutterBottom>
-                    subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+                Make your portfolio reflect your best vision for our future. Always be thinking ahead. Be optimistic.
                 </Typography>
             </div>
 
@@ -53,17 +59,16 @@ export const Main = () => {
                                 component="img"
                                 alt="Image"
                                 height="250"
-                                image={rocketImage}
-                                title="rocket"
-                                cardImageHover
+                                image={environmentImage}
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    TO THE MOON
-                                    </Typography>
+                                E is for environmental
+                                </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    GME GO BRRR
-                                    </Typography>
+                                The environmental component requires research into a variety of elements that illustrate a company's impact on the Earth, 
+                                in both positive and negative ways. A company that's an actively good steward for the environment might be deserving of your dollars. 
+                                </Typography>
                             </CardContent>
                         </Card>
                     </Slide>
@@ -75,15 +80,14 @@ export const Main = () => {
                                 component="img"
                                 alt="Image"
                                 height="250"
-                                image={rocketImage}
-                                title="rocket"
+                                image={socialImage}
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    TO THE MOON
+                                S is for social
                                     </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    GME GO BRRR
+                                The social component consists of people-related elements like company culture and issues that impact employees, customers, consumers, and suppliers -- both within the company and in greater society. 
                                     </Typography>
                             </CardContent>
                         </Card>
@@ -96,15 +100,15 @@ export const Main = () => {
                                 component="img"
                                 alt="Image"
                                 height="250"
-                                image={rocketImage}
-                                title="rocket"
+                                image={governanceImage}
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    TO THE MOON
+                                G is for corporate governance
                                     </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    GME GO BRRR
+                                The corporate governance component relates to the board of directors and company oversight, as well as shareholder-friendly versus management-centric attitude. In less dry terms, 
+                                ESG investors analyze how corporate managements and boards relate to different stakeholders, how the business is run, and whether the corporate incentives align with the business's success.  
                                     </Typography>
                             </CardContent>
                         </Card>
