@@ -1,7 +1,7 @@
 $env:FLASK_DEBUG=0
 $env:FLASK_APP="server:create_server"
 
-if ([bool](Get-job -Name GreenRockFlask -ea silentlycontinue)){
+if ([bool](Get-job -Name GreenRockFlask -ErrorAction SilentlyContinue)){
     Get-Job -Name GreenRockFlask | Stop-Job
     Get-Job -Name GreenRockFlask | Remove-Job
 }
