@@ -1,4 +1,5 @@
-from Flask import Flask
+from flask import Flask
+
 import secrets
 
 
