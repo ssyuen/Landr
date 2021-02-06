@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, abort
 from flask_cors import cross_origin
 import finviz
 import finnhub
@@ -22,6 +22,10 @@ def get_all_tickers():
 @cross_origin()
 def get_ticker():
     param = request.args.get('symbols')
+    if not param:
+        abort(400)
+    param = param.strip()
+
     symbol_list = param.split(",")
 
     ll = []
