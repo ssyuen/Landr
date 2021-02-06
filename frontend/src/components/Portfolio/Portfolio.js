@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import { Accordion, AccordionDetails, AccordionSummary, Button, Card, CardContent, Grid, IconButton, Tooltip, Typography } from '@material-ui/core'
+import { Accordion, AccordionDetails, AccordionSummary, Button, Card, CardContent, CircularProgress, Grid, IconButton, Tooltip, Typography } from '@material-ui/core'
 
-import { AddIcon, CloseIcon, DataGrid, GridToolbar } from '@material-ui/data-grid';
+import { AddIcon, CloseIcon, DataGrid, GridToolbar, stringNumberComparer } from '@material-ui/data-grid';
 import { Doughnut } from 'react-chartjs-2'
 import RemoveIcon from '@material-ui/icons/Remove';
 
@@ -29,12 +29,6 @@ const columns = [
     },
 ];
 
-function reducer(state, action) {
-    switch (action.type) {
-
-    }
-}
-
 export const Portfolio = () => {
     const addingStock = useRef(false)
     const addedStock = useRef('')
@@ -48,6 +42,7 @@ export const Portfolio = () => {
     const [stockData, setStockData] = useState([])
     const [stockDataFetched, setStockDataFetched] = useState(false)
 
+    const [modifiedGraph,setModifiedGraph] = useState(false)
 
     const [userPortfolioData, setUserPortfolioData] = useState({
         labels: [],
@@ -182,7 +177,9 @@ export const Portfolio = () => {
             if(increment.current){
                 console.log('increment')
                 let temp = {...userPortfolioData}
+                console.log(temp)
                 let indexOfStock = temp.labels.indexOf(updatedStock.current)
+                console.log(indexOfStock)
                 let count = temp.datasets[0].data[indexOfStock]
                 count += 1
                 temp.datasets[0].data[indexOfStock] = count
@@ -190,6 +187,7 @@ export const Portfolio = () => {
                 increment.current = false
             }
             if(decrement.current){
+                console.log('decrement')
                 let temp = {...userPortfolioData}
                 let indexOfStock = temp.labels.indexOf(updatedStock.current)
                 let count = temp.datasets[0].data[indexOfStock]
@@ -207,6 +205,12 @@ export const Portfolio = () => {
             //         borderColor: [...prevPortData.datasets[0].borderColor],
             //     }]
             // }))
+            setModifiedGraph(!modifiedGraph)
+            
+            setUserPortfolioData((prevState) => {
+                console.log('state updating')
+                return prevState
+            })
             updatingStock.current = false;
         }
     }, [tickSharePair])
@@ -261,17 +265,34 @@ export const Portfolio = () => {
                     else if (stock.rowIds.length - 1 < currPortLength) {
                         let currentSet = new Set(stock.rowIds)
                         let oldSet = userPortfolioData.labels.filter(ticker => !currentSet.has(ticker))
-
+                        
+                        console.log(oldSet)
+                        console.log(stock.rowIds)
+                        var oldInd = 0
+                        for (let i = 0; i < stock.rowIds.length; i++) {
+                            if (stock.rowIds[i].localeCompare(oldSet[0])) {
+                                console.log('found at ', i)
+                                oldInd=i
+                            }
+                            
+                        }
+                        console.log(oldInd)
                         let oldTicker = oldSet[0]
+                        
                         let temp = tickSharePair
                         delete temp[oldTicker]
+
+
+
+                        console.log(userPortfolioData.datasets[0].data.slice(0,oldInd).concat(userPortfolioData.datasets[0].data.slice(oldInd+1)))
 
                         setTickSharePair(temp)
                         setUserPortfolioData(prevPortData => (
                             {
                                 labels: stock.rowIds,
                                 datasets: [{
-                                    data: [...prevPortData.datasets[0].data.slice(0, -1)],
+                                    // data: [...prevPortData.datasets[0].data.slice(0, -1)],
+                                    data: [prevPortData.datasets[0].data.slice(0,oldInd).concat(prevPortData.datasets[0].data.slice(oldInd+1))],
                                     backgroundColor: [...prevPortData.datasets[0].backgroundColor],
                                     borderColor: [...prevPortData.datasets[0].borderColor],
                                 }]
@@ -281,7 +302,7 @@ export const Portfolio = () => {
                     // ADDING A STOCK TO PORTFOLIO
                     else {
                         let tickerName = stock.rowIds[stock.rowIds.length - 1]
-                        setTickSharePair({ ...tickSharePair, [tickerName]: 10 })
+                        setTickSharePair({ ...tickSharePair, [tickerName]: 1 })
                         addingStock.current = true;
                         addedStock.current = tickerName;
                         // setUserPortfolioData(prevPortData => ({
@@ -306,7 +327,8 @@ export const Portfolio = () => {
             />
             <Grid container justify="space-between">
                 <Grid item xs>
-                    <Doughnut data={userPortfolioData}></Doughnut>
+                    {!modifiedGraph ? <Doughnut data={userPortfolioData}></Doughnut> : <CircularProgress/>}
+                    
 
 
                 </Grid>
@@ -328,6 +350,7 @@ export const Portfolio = () => {
                                                     updatingStock.current = true;
                                                     updatedStock.current = ticker;
                                                     increment.current = true;
+                                                    setModifiedGraph(!modifiedGraph)
                                                 }}
                                                 onFocus={(event) => event.stopPropagation()}>
                                                 <AddIcon />
@@ -340,6 +363,7 @@ export const Portfolio = () => {
                                                     updatingStock.current = true;
                                                     updatedStock.current = ticker;
                                                     decrement.current = true;
+                                                    setModifiedGraph(!modifiedGraph)
                                                 }}
                                                 onFocus={(event) => event.stopPropagation()}>
                                                 <RemoveIcon />
