@@ -11,6 +11,8 @@ requests = "*"
 finviz = "*"
 finnhub-python = "*"
 flask-cors = "*"
+selenium = "*"
+beautifulsoup4 = "*"
 
 [scripts]
 server = "start.sh"
