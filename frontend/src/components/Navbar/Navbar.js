@@ -37,7 +37,7 @@ export default function ButtonAppBar() {
                         <CodeIcon />
                     </IconButton>
                     {/* Links */}
-                    <Button color="inherit" className={classes.links} >Porfolio</Button>
+                    <Button color="inherit" className={classes.links}>Porfolio</Button>
                     
                     {/* <Divider orientation="vertical" flexItem /> */}
                     
