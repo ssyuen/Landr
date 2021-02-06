@@ -10,7 +10,7 @@ flask = "*"
 requests = "*"
 
 [scripts]
-server = "python server.py"
+server = "start.sh"
 
 [requires]
 python_version = "3.7"
