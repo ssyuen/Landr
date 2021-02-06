@@ -11,10 +11,6 @@
     <img alt="Built with love" src="https://forthebadge.com/images/badges/built-with-love.svg">  
   </a>
   
-  <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
-    <img alt="Built by developers" src="https://forthebadge.com/images/badges/built-by-developers.svg">
-  </a>
-  
    <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
     <img alt="Gluten Free" src="https://forthebadge.com/images/badges/made-with-crayons.svg">
   </a>
