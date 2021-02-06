@@ -4,19 +4,15 @@
 
 <p align="center">
  <a href="https://www.python.org/downloads/release/python-375/" target="_blank">
-    <img alt="Made with Python" src="https://forthebadge.com/images/badges/made-with-python.svg">
+    <img alt="Made with Python" src="https://forthebadge.com/images/badges/made-with-javascript.svg">
   </a>
   
   <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
     <img alt="Built with love" src="https://forthebadge.com/images/badges/built-with-love.svg">  
   </a>
   
-  <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
-    <img alt="Built by developers" src="https://forthebadge.com/images/badges/built-by-developers.svg">
-  </a>
-  
    <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
-    <img alt="Gluten Free" src="https://forthebadge.com/images/badges/gluten-free.svg">
+    <img alt="Gluten Free" src="https://forthebadge.com/images/badges/made-with-crayons.svg">
   </a>
   
   <br>
@@ -38,6 +34,8 @@ For the UGAHacks **BlackRock** challenge, we wanted to build a platform that wou
 portfolio with helpful tooltips and information with sustainable investments in mind. This project comes at a time
 when many people are beginning to invest their money into the market, and we believe Landr, pronounced as Lander,
 educates them about certain important performance metrics while holding to account risk and portfolio sustainability.
+We chose the name Lander because of the recent investing frenzy of going to the moon. We hope Landr will help land you
+on the moon and land you a great portfolio.
 
 ## Introduction
 Landr is a web application that allows an individual to build their portfolio. They can choose a variety of stocks by
@@ -50,7 +48,7 @@ the platform provides news sentiment whether your portfolio has bullish or beari
 Our target audience is anybody who is looking to invest their money responsibly while remaining educated about
 the risks and rewards of their investments.
 
-### Landr platform structure
+### Landr Platform Structure
 The frontend stack of Landr was created with React.js and various other libraries for data visualization. The backend
 stack was created using Python 3 and Flask. Landr is a responsive application by virtue of the front end stack.
 
@@ -71,8 +69,10 @@ This could easily have been replaced with live data, but we encountered API rest
 - **RapidApi** + **ESG Data (esg.enterprise.app)** for ESG total scores for a single ticker
 - **D3** Charts for Data visualization
 
-## How we would like to improve Landr in the future
-Replace
+## How would we improve Landr?
+Given more time, our team would have loved to incorporate a more immersive and user centric design. This would mean
+the ability to save portfolios and preferences to a cloud instance. Furthermore, we would have loved to add creative
+and unique data from other APIs to really tailor information based on the user's interests.
 
 # Technical? Run it yourself!
 

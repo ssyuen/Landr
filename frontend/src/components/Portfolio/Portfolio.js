@@ -7,6 +7,15 @@ import { Doughnut } from 'react-chartjs-2'
 import RemoveIcon from '@material-ui/icons/Remove';
 import { CompanyData } from '../CompanyData/CompanyData';
 import { PortfolioOverview } from '../PortfolioOverview/PortfolioOverview';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    header: {
+        width: '100%',
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(2),
+    }
+}));
 
 const columns = [
     { field: 'id', headerName: 'Ticker', width: 100 },
@@ -32,6 +41,8 @@ const columns = [
 ];
 
 export const Portfolio = () => {
+    const classes = useStyles();
+
     const addingStock = useRef(false)
     const addedStock = useRef('')
 
@@ -217,9 +228,11 @@ export const Portfolio = () => {
 
     return (
         <div style={{ height: '600px' }}>
-            <Typography variant="h2" component="h2" gutterBottom>
-                Build Your Portfolio!
+            <div className={classes.header}>
+                <Typography variant="h2" component="h2" gutterBottom>
+                    Build Your Portfolio!
             </Typography>
+            </div>
             <DataGrid
                 autoPageSize
                 rows={stockData}

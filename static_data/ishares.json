@@ -1,0 +1,38 @@
+{
+  "SUSA": {
+    "52W Range": "47.60 - 85.91",
+    "Name": "iShares MSCI USA ESG Select ETF",
+    "Ticker": "SUSA",
+    "Price": "$85.91",
+    "YTD Return": "3.92%",
+    "Holdings": "201",
+    "P/E Ratio": "29.43",
+    "Net Assets": "$2,555,832,467",
+    "MSCI ESG Fund Rating": "A",
+    "Why": "Obtain exposure to a range of large- and mid-cap U.S. stocks with leading environmental, social, and governance practices"
+  },
+  "ICLN": {
+    "52W Range": "8.29 - 33.20",
+    "Name": "iShares Global Clean Energy ETF",
+    "Ticker": "ICLN",
+    "Price": "$31.10",
+    "YTD Return": "9.85%",
+    "Holdings": "30",
+    "P/E Ratio": "44.53",
+    "Net Assets": "$$6,963,553,405",
+    "MSCI ESG Fund Rating": "AA",
+    "Why": "Exposure to companies that produce energy from solar, wind, and other renewable sources"
+  },
+  "SDG": {
+    "52W Range": "50.94 - 99.32",
+    "Name": "iShares MSCI Global Impact ETF",
+    "Ticker": "SDG",
+    "Price": "$97.21",
+    "YTD Return": "3.96%",
+    "Holdings": "133",
+    "P/E Ratio": "22.73",
+    "Net Assets": "$383,978,656",
+    "MSCI ESG Fund Rating": "AA",
+    "Why": "Obtain exposure to global stocks aiming to advance themes related to the United Nation’s Sustainable Development Goals, such as education or climate change"
+  }
+}
