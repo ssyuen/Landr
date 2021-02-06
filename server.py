@@ -1,7 +1,14 @@
 from flask import Flask
 from flask_cors import CORS
+from selenium import webdriver
+
 import secrets
 
+options = webdriver.ChromeOptions()
+options.add_argument('--ignore-certificate-errors')
+options.add_argument('--incognito')
+options.add_argument('--headless')
+driver = webdriver.Chrome("bin/chromedriver/chromedriver.exe", chrome_options=options)
 
 def create_server():
     app = Flask(__name__)
