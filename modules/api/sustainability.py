@@ -85,8 +85,8 @@ def esg_all():
 
     return jsonify(
         total_risk=total_risk,
-        total_contraversy=total_controversy,
-        total_contraversy_min=0,
-        total_contraversy_max=5 * len(symbols)
+        total_controversy=total_controversy,
+        total_controversy_min=0,
+        total_controversy_max=5 * len(symbols)
     )
 
