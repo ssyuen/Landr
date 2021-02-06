@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
+// doesnt work?
 const theme = createMuiTheme({
   pallete: {
     primary: "#212121",

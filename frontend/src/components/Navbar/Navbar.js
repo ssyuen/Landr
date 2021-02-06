@@ -1,57 +1,53 @@
-import React from "react";
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react'
 import AppBar from '@material-ui/core/AppBar';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import CodeIcon from '@material-ui/icons/Code';
-import Divider from '@material-ui/core/Divider';
-
+import FolderIcon from '@material-ui/icons/Folder';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import HomeIcon from '@material-ui/icons/Home';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        // border: '5px solid red'
     },
-    icon: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-    links: {
-        marginRight: theme.spacing(4),
+    fullHeight: {
+        ...theme.mixins.toolbar,
     },
 }));
 
+export const Navbar = () => {
 
-export default function ButtonAppBar() {
+    const [value, setValue] = useState("home");
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+    
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" className={classes.appBar}>
+            <AppBar position="static">
                 <Toolbar>
-                    {/* Icon  */}
-                    <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu">
-                        <CodeIcon />
-                    </IconButton>
-                    {/* Links */}
-                    <Button color="inherit" className={classes.links}>Porfolio</Button>
-                    
-                    {/* <Divider orientation="vertical" flexItem /> */}
-                    
-                    <Button color="inherit" className={classes.links}>About</Button>
-                    
-                    {/* <Divider orientation="vertical" flexItem /> */}
-
-                    <Typography variant="h6" className={classes.title}>
-                        <Button color="inherit">Profile</Button>
-                    </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Grid container alignItems="center" justify="space-between">
+                        <Grid item>
+                            <Typography color="inherit" variant="title">GreenRock</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Tabs className={classes.fullHeight} onChange={handleChange} value={value}>
+                                <Tab className={classes.fullHeight} label="Home" icon={<HomeIcon/>} value="home" to='/Home' component={Link}/>
+                                <Tab className={classes.fullHeight} label="Portfolio" icon={<FolderIcon/>} value="portfolio" to='/Portfolio' component={Link}/>
+                                <Tab className={classes.fullHeight} label="Profile" icon={<AccountBoxIcon/>} value="profile" to='/Profile' component={Link}/>
+                            </Tabs>
+                        </Grid>
+                    </Grid>
                 </Toolbar>
             </AppBar>
         </div>
     )
-
 }
