@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 flask = "*"
 requests = "*"
+finviz = "*"
+finnhub-python = "*"
 
 [scripts]
 server = "start.sh"

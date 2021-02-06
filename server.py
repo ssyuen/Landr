@@ -1,12 +1,13 @@
 from flask import Flask
 import secrets
 
+
 def create_server():
     app = Flask(__name__)
     
     with app.app_context():
         
-        #secret_key generation
+        # secret_key generation
         app.secret_key = secrets.token_urlsafe(256)
 
         # if you reformat this code, the imports go up resulting in
