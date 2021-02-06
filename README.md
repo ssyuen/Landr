@@ -16,7 +16,7 @@
   </a>
   
    <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
-    <img alt="Gluten Free" src="https://forthebadge.com/images/badges/gluten-free.svg">
+    <img alt="Gluten Free" src="https://forthebadge.com/images/badges/made-with-crayons.svg">
   </a>
   
   <br>
