@@ -4,7 +4,7 @@
 
 <p align="center">
  <a href="https://www.python.org/downloads/release/python-375/" target="_blank">
-    <img alt="Made with Python" src="https://forthebadge.com/images/badges/made-with-python.svg">
+    <img alt="Made with Python" src="https://forthebadge.com/images/badges/made-with-javascript.svg">
   </a>
   
   <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
