@@ -1,34 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { Box, Checkbox, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Table, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Grid,  Tooltip, Typography } from '@material-ui/core'
+
 import { DataGrid, GridToolbar } from '@material-ui/data-grid';
-// import { Doughnut } from '@reactchartjs/react-chart.js'
 import { Doughnut } from 'react-chartjs-2'
-
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        // border: '5px solid red'
-    },
-    paper: {
-        padding: theme.spacing(2),
-        color: theme.palette.text.secondary,
-
-    },
-    filter: {
-
-        textAlign: 'left',
-        color: theme.palette.text.secondary,
-        margin: '15px',
-        border: '1px solid grey',
-        borderRadius: '25px',
-        boxShadow: '3px 3px 3px grey'
-    }
-}));
 
 const columns = [
     { field: 'id', headerName: 'Ticker', width: 100 },
@@ -54,35 +29,6 @@ const columns = [
 ];
 
 
-
-
-const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [
-        {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-        },
-    ],
-}
-
 const randomRgba = () => {
     var o = Math.round, r = Math.random, s = 255;
     let red = o(r() * s)
@@ -95,9 +41,11 @@ const randomRgba = () => {
     };
 }
 
+
 export const Portfolio = () => {
     const [stockData, setStockData] = useState([])
     const [stockDataFetched, setStockDataFetched] = useState(false)
+
 
     const [userPortfolioData, setUserPortfolioData] = useState({
         labels: [],
@@ -111,14 +59,50 @@ export const Portfolio = () => {
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 302, 255, 0.2)',
+                'rgba(255, 259, 64, 0.2)',
+                'rgba(255, 199, 132, 0.2)',
+                'rgba(54, 122, 235, 0.2)',
+                'rgba(255, 236, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 202, 255, 0.2)',
+                'rgba(255, 352, 64, 0.2)',
+                'rgba(255, 29, 132, 0.2)',
+                'rgba(54, 132, 235, 0.2)',
+                'rgba(255, 106, 86, 0.2)',
+                'rgba(75, 152, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 154, 64, 0.2)',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 302, 255, 0.2)',
+                'rgba(255, 259, 64, 0.2)',
+                'rgba(255, 199, 132, 0.2)',
+                'rgba(54, 122, 235, 0.2)',
+                'rgba(255, 236, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 202, 255, 0.2)',
+                'rgba(255, 352, 64, 0.2)',
+                'rgba(255, 29, 132, 0.2)',
+                'rgba(54, 132, 235, 0.2)',
+                'rgba(255, 106, 86, 0.2)',
+                'rgba(75, 152, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 154, 64, 0.2)',
             ],
             borderWidth: 1,
         }]
@@ -150,17 +134,27 @@ export const Portfolio = () => {
                         let peRatio = values['P/E']
                         let sector = values['Industry']
                         let marketCap = values['Market Cap']
+                        let volatility = values['Volatility']
+                        let beta = values['Beta']
+                        let volume = values['Volume']
 
 
-                        rows.push({ id: tickerName, Name: companyName, price: stockPrice, 'p/e ratio': peRatio, 'Market Cap': marketCap, 'sector': sector })
+                        rows.push({
+                            id: tickerName,
+                            Name: companyName,
+                            price: stockPrice,
+                            'p/e ratio': peRatio,
+                            'Market Cap': marketCap,
+                            'sector': sector,
+                            volatility: volatility,
+                            beta: beta,
+                            volume: volume,
+                        })
                     });
                     setStockData(rows)
                     // SET stockDataFetched to True
                     setStockDataFetched(true)
                 })
-
-
-
 
         }
 
@@ -168,9 +162,11 @@ export const Portfolio = () => {
 
 
 
-    const classes = useStyles();
     return (
         <div style={{ height: '600px' }}>
+            <Typography variant="h2" component="h2" gutterBottom>
+                Build Your Portfolio!
+            </Typography>
             <DataGrid
                 autoPageSize
                 rows={stockData}
@@ -189,25 +185,22 @@ export const Portfolio = () => {
                                 }]
                             }))
                     }
+
                     // DONT LET USER DO THIS
                     else if (stock.rowIds.length === 501) {
-                        let tickerNames = []
                         let data = []
-                        stock.rowIds.forEach(ticker => {
 
-                            tickerNames.push(ticker)
-                        });
                         for (let i = 0; i < 501; i++) {
                             data.push(10)
                         }
                         setUserPortfolioData(prevPortData => (
 
                             {
-                                labels: [tickerNames],
+                                labels: stock.rowIds,
                                 datasets: [{
-                                    label: [...prevPortData.datasets[0].label],
-                                    data: [data],
-                                    borderWidth: [prevPortData.datasets[0].borderWidth],
+                                    data: [...prevPortData.datasets[0].data, 10],
+                                    backgroundColor: [...prevPortData.datasets[0].backgroundColor],
+                                    borderColor: [...prevPortData.datasets[0].borderColor],
                                 }]
                             }))
                     }
@@ -228,7 +221,7 @@ export const Portfolio = () => {
                     // ADDING A STOCK TO PORTFOLIO
                     else {
                         let tickerName = stock.rowIds[stock.rowIds.length - 1]
-                        let colors = randomRgba()
+                        
                         setUserPortfolioData(prevPortData => ({
                             labels: [...prevPortData.labels, tickerName],
                             datasets: [{
@@ -237,17 +230,96 @@ export const Portfolio = () => {
                                 borderColor: [...prevPortData.datasets[0].borderColor],
                             }]
                         }))
+                        setCurrPortLength(stock.rowIds.length - 1)
 
                     }
-                    setCurrPortLength(stock.rowIds.length - 1)
-
                 }}
                 showToolbar
                 components={{
                     Toolbar: GridToolbar
-                }}
+                }
+                }
             />
-            <Doughnut data={userPortfolioData}></Doughnut>
+            <Grid container justify="space-between">
+                <Grid item xs>
+                    <Doughnut data={userPortfolioData}></Doughnut>
+
+
+                </Grid>
+                <Grid item xs>
+                    {userPortfolioData.labels.length !== 0 ? <Card>
+                        <CardContent>
+                            {userPortfolioData.labels.map(ticker => {
+                                return (
+                                    <Accordion>
+                                        <AccordionSummary>
+                                            <Typography variant="h5">
+                                                {ticker}
+                                            </Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+
+                                            {
+                                                stockData.filter((stock) => {
+                                                    return stock.id === ticker
+                                                }).map(stock => {
+                                                    console.log(stock)
+                                                    return (
+                                                        <div>
+                                                            <Tooltip title="The name of the company">
+                                                                <Typography>
+                                                                    Company: {stock.Name}
+                                                                </Typography>
+                                                            </Tooltip>
+                                                            <Tooltip title="The current trading price of the stock">
+                                                                <Typography>
+                                                                    Price: {stock.price}
+                                                                </Typography>
+                                                            </Tooltip>
+                                                            <Tooltip title="The price earnings ratio of the stock">
+                                                                <Typography>
+                                                                    P/E Ratio: {stock.['p/e ratio']}
+                                                                </Typography>
+                                                            </Tooltip>
+                                                            <Tooltip title="The current trading volume of the stock">
+                                                                <Typography>
+                                                                    Volume: {stock.volume}
+                                                                </Typography>
+                                                            </Tooltip>
+                                                            <Tooltip title="The systematic risk of the stock compared to the entire market">
+                                                                <Typography>
+                                                                    Beta: {stock.beta}
+                                                                </Typography>
+                                                            </Tooltip>
+                                                            <Tooltip title="The total dollar market value of the outstanding shares">
+                                                                <Typography>
+                                                                    Market Cap.: {stock['Market Cap']}
+                                                                </Typography>
+                                                            </Tooltip>
+                                                            <Tooltip title="The market sector that the company resides in">
+                                                                <Typography>
+                                                                    Sector: {stock.sector}
+                                                                </Typography>
+                                                            </Tooltip>
+
+                                                        </div>
+
+
+                                                    )
+                                                })
+
+                                            }
+                                        </AccordionDetails>
+                                    </Accordion>
+
+                                )
+                            })}
+                        </CardContent>
+                    </Card> : <div></div>}
+
+                </Grid>
+            </Grid>
+
 
 
         </div>
