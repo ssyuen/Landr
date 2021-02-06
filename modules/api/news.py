@@ -7,13 +7,6 @@ finnhub_client = finnhub.Client(api_key="c02ql9n48v6v3d2p6ojg")
 news_api_bp = Blueprint('news_api_bp', __name__, url_prefix='/api/news')
 
 
-@news_api_bp.route('/test_function', methods=['GET'])
-@cross_origin()
-def test_function():
-    return jsonify(
-        Hello="World"
-    )
-
 @news_api_bp.route('/get_sentiment', methods=['GET'])
 @cross_origin()
 def get_sentiment():
@@ -28,6 +21,7 @@ def _get_sentiment_for_symbol(symbol):
     sentiment_info = finnhub_client.news_sentiment(symbol)
     print(sentiment_info)
     return jsonify(sentiment=sentiment_info)
+
 
 @news_api_bp.route('/get_total_sentiment', methods=['GET'])
 @cross_origin()

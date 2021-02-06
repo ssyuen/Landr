@@ -50,7 +50,7 @@ the platform provides news sentiment whether your portfolio has bullish or beari
 Our target audience is anybody who is looking to invest their money responsibly while remaining educated about
 the risks and rewards of their investments.
 
-### Landr platform structure
+### Landr Platform Structure
 The frontend stack of Landr was created with React.js and various other libraries for data visualization. The backend
 stack was created using Python 3 and Flask. Landr is a responsive application by virtue of the front end stack.
 
