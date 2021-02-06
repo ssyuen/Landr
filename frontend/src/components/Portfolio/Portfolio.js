@@ -5,6 +5,15 @@ import { Accordion, AccordionDetails, AccordionSummary, Button, Card, CardConten
 import { AddIcon, CloseIcon, DataGrid, GridToolbar, stringNumberComparer } from '@material-ui/data-grid';
 import { Doughnut } from 'react-chartjs-2'
 import RemoveIcon from '@material-ui/icons/Remove';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    header: {
+        width: '100%',
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(2),
+    }
+}));
 
 const columns = [
     { field: 'id', headerName: 'Ticker', width: 100 },
@@ -30,6 +39,8 @@ const columns = [
 ];
 
 export const Portfolio = () => {
+    const classes = useStyles();
+
     const addingStock = useRef(false)
     const addedStock = useRef('')
 
@@ -42,7 +53,7 @@ export const Portfolio = () => {
     const [stockData, setStockData] = useState([])
     const [stockDataFetched, setStockDataFetched] = useState(false)
 
-    const [modifiedGraph,setModifiedGraph] = useState(false)
+    const [modifiedGraph, setModifiedGraph] = useState(false)
 
     const [userPortfolioData, setUserPortfolioData] = useState({
         labels: [],
@@ -172,11 +183,11 @@ export const Portfolio = () => {
             }))
             addingStock.current = false;
         }
-        
+
         if (updatingStock.current) {
-            if(increment.current){
+            if (increment.current) {
                 console.log('increment')
-                let temp = {...userPortfolioData}
+                let temp = { ...userPortfolioData }
                 console.log(temp)
                 let indexOfStock = temp.labels.indexOf(updatedStock.current)
                 console.log(indexOfStock)
@@ -186,9 +197,9 @@ export const Portfolio = () => {
                 setUserPortfolioData(temp)
                 increment.current = false
             }
-            if(decrement.current){
+            if (decrement.current) {
                 console.log('decrement')
-                let temp = {...userPortfolioData}
+                let temp = { ...userPortfolioData }
                 let indexOfStock = temp.labels.indexOf(updatedStock.current)
                 let count = temp.datasets[0].data[indexOfStock]
                 count -= 1
@@ -196,7 +207,7 @@ export const Portfolio = () => {
                 setUserPortfolioData(temp)
                 decrement.current = false
             }
-            
+
             // setUserPortfolioData(prevPortData => ({
             //     labels: [...prevPortData.labels],
             //     datasets: [{
@@ -206,7 +217,7 @@ export const Portfolio = () => {
             //     }]
             // }))
             setModifiedGraph(!modifiedGraph)
-            
+
             setUserPortfolioData((prevState) => {
                 console.log('state updating')
                 return prevState
@@ -219,9 +230,11 @@ export const Portfolio = () => {
 
     return (
         <div style={{ height: '600px' }}>
-            <Typography variant="h2" component="h2" gutterBottom>
-                Build Your Portfolio!
+            <div className={classes.header}>
+                <Typography variant="h2" component="h2" gutterBottom>
+                    Build Your Portfolio!
             </Typography>
+            </div>
             <DataGrid
                 autoPageSize
                 rows={stockData}
@@ -265,26 +278,26 @@ export const Portfolio = () => {
                     else if (stock.rowIds.length - 1 < currPortLength) {
                         let currentSet = new Set(stock.rowIds)
                         let oldSet = userPortfolioData.labels.filter(ticker => !currentSet.has(ticker))
-                        
+
                         console.log(oldSet)
                         console.log(stock.rowIds)
                         var oldInd = 0
                         for (let i = 0; i < stock.rowIds.length; i++) {
                             if (stock.rowIds[i].localeCompare(oldSet[0])) {
                                 console.log('found at ', i)
-                                oldInd=i
+                                oldInd = i
                             }
-                            
+
                         }
                         console.log(oldInd)
                         let oldTicker = oldSet[0]
-                        
+
                         let temp = tickSharePair
                         delete temp[oldTicker]
 
 
 
-                        console.log(userPortfolioData.datasets[0].data.slice(0,oldInd).concat(userPortfolioData.datasets[0].data.slice(oldInd+1)))
+                        console.log(userPortfolioData.datasets[0].data.slice(0, oldInd).concat(userPortfolioData.datasets[0].data.slice(oldInd + 1)))
 
                         setTickSharePair(temp)
                         setUserPortfolioData(prevPortData => (
@@ -292,7 +305,7 @@ export const Portfolio = () => {
                                 labels: stock.rowIds,
                                 datasets: [{
                                     // data: [...prevPortData.datasets[0].data.slice(0, -1)],
-                                    data: [prevPortData.datasets[0].data.slice(0,oldInd).concat(prevPortData.datasets[0].data.slice(oldInd+1))],
+                                    data: [prevPortData.datasets[0].data.slice(0, oldInd).concat(prevPortData.datasets[0].data.slice(oldInd + 1))],
                                     backgroundColor: [...prevPortData.datasets[0].backgroundColor],
                                     borderColor: [...prevPortData.datasets[0].borderColor],
                                 }]
@@ -327,8 +340,8 @@ export const Portfolio = () => {
             />
             <Grid container justify="space-between">
                 <Grid item xs>
-                    {!modifiedGraph ? <Doughnut data={userPortfolioData}></Doughnut> : <CircularProgress/>}
-                    
+                    {!modifiedGraph ? <Doughnut data={userPortfolioData}></Doughnut> : <CircularProgress />}
+
 
 
                 </Grid>
