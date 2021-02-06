@@ -53,86 +53,203 @@ const columns = [
     },
 ];
 
-const rows = [
-    { id: 'AAPL', Name: 'Apple', 'Market Cap': 'Jon', price: 35, 'p/e ratio': 10, 'sector': 'Information Technology' },
-    { id: 'MSFT', Name: 'Microsoft', 'Market Cap': 'Cersei', price: 42, 'p/e ratio': 10, 'sector': 'Information Technology' },
-    { id: 'T', Name: 'Lannister', 'Market Cap': 'Jaime', price: 45, 'p/e ratio': 10, 'sector': 'Telecommunication Services' },
-    { id: 'KO', Name: 'Coca-Cola', 'Market Cap': 'Arya', price: 16, 'p/e ratio': 10, 'sector': 'Consumer Staples' },
-    { id: 'AAL', Name: 'American Airlines', 'Market Cap': 'Daenerys', price: null, 'p/e ratio': 10, 'sector': 'Industrials' },
-    { id: 'GME', Name: 'Gamestop', 'Market Cap': null, price: 150, 'p/e ratio': 10, 'sector': 'Consumer Discretionary' },
-    { id: 'AMC', Name: 'AMC', 'Market Cap': 'Ferrara', price: 44, 'p/e ratio': 10, 'sector': 'Consumer Discretionary' },
-    { id: 'BAC', Name: 'Bank of America', 'Market Cap': 'Rossini', price: 36, 'p/e ratio': 10, 'sector': 'Financials' },
-    { id: 'VOO', Name: 'VOO', 'Market Cap': 'Harvey', price: 65, 'p/e ratio': 10, 'sector': 'N/A' },
-];
+
 
 
 const data = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [
-      {
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-        ],
-        borderWidth: 1,
-      },
+        {
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 1,
+        },
     ],
-  }
+}
+
+const randomRgba = () => {
+    var o = Math.round, r = Math.random, s = 255;
+    let red = o(r() * s)
+    let green = o(r() * s)
+    let blue = o(r() * s)
+
+    return {
+        unfilled: 'rgba(' + red + ',' + green + ',' + blue + ',' + .2 + ')',
+        filled: 'rgba(' + red + ',' + green + ',' + blue + ',' + 1 + ')',
+    };
+}
 
 export const Portfolio = () => {
-    const [stockData, setStockData] = useState({})
+    const [stockData, setStockData] = useState([])
     const [stockDataFetched, setStockDataFetched] = useState(false)
 
-    const [stocksToAdd, addStock] = useState([])
+    const [userPortfolioData, setUserPortfolioData] = useState({
+        labels: [],
+        datasets: [{
+            label: 'Portfolio Breakdown',
+            data: [],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 1,
+        }]
+    })
+    const [currPortLength, setCurrPortLength] = useState(0)
 
     useEffect(() => {
         if (!stockDataFetched) {
             // FETCH ALL STOCK DATA HERE
-            // SET IT INTO stockData
-            // SET stockDataFetched to True
-            setStockDataFetched(true)
+            fetch('http://localhost:5000/api/portf/get_all_tickers', {
+                method: 'GET',
+                mode: 'cors',
+
+
+            })
+                .then(data => data.json())
+                .then(data => {
+                    // SET IT INTO stockData
+
+                    let rows = []
+                    data.forEach(res => {
+
+                        let tickerName = Object.getOwnPropertyNames(res)[0]
+
+                        // VALUSE REFERS TO THE OBJECT POINTED BY tickerName
+                        let values = res[tickerName]
+                        let companyName = values['Company']
+                        let stockPrice = values['Price']
+                        let peRatio = values['P/E']
+                        let sector = values['Industry']
+                        let marketCap = values['Market Cap']
+
+
+                        rows.push({ id: tickerName, Name: companyName, price: stockPrice, 'p/e ratio': peRatio, 'Market Cap': marketCap, 'sector': sector })
+                    });
+                    setStockData(rows)
+                    // SET stockDataFetched to True
+                    setStockDataFetched(true)
+                })
+
+
+
+
         }
 
     })
 
-    // const  = () => {
 
-    // }
 
     const classes = useStyles();
     return (
-        <div style={{ height: '400px' }}>
+        <div style={{ height: '600px' }}>
             <DataGrid
                 autoPageSize
-                rows={rows}
+                rows={stockData}
                 columns={columns}
 
                 checkboxSelection
                 onSelectionChange={stock => {
-                    addStock([...stocksToAdd, stock])
+                    if (stock.rowIds.length === 0) {
+                        setUserPortfolioData(prevPortData => (
+                            {
+                                labels: [],
+                                datasets: [{
+                                    data: [],
+                                    backgroundColor: [...prevPortData.datasets[0].backgroundColor],
+                                    borderColor: [...prevPortData.datasets[0].borderColor],
+                                }]
+                            }))
+                    }
+                    // DONT LET USER DO THIS
+                    else if (stock.rowIds.length === 501) {
+                        let tickerNames = []
+                        let data = []
+                        stock.rowIds.forEach(ticker => {
+
+                            tickerNames.push(ticker)
+                        });
+                        for (let i = 0; i < 501; i++) {
+                            data.push(10)
+                        }
+                        setUserPortfolioData(prevPortData => (
+
+                            {
+                                labels: [tickerNames],
+                                datasets: [{
+                                    label: [...prevPortData.datasets[0].label],
+                                    data: [data],
+                                    borderWidth: [prevPortData.datasets[0].borderWidth],
+                                }]
+                            }))
+                    }
+                    // SUBTRACTING A STOCK FROM PORFTOLIO
+                    else if (stock.rowIds.length - 1 < currPortLength) {
+
+                        setUserPortfolioData(prevPortData => (
+                            {
+                                labels: stock.rowIds,
+                                datasets: [{
+                                    data: [...prevPortData.datasets[0].data.slice(0, -1)],
+                                    backgroundColor: [...prevPortData.datasets[0].backgroundColor],
+                                    borderColor: [...prevPortData.datasets[0].borderColor],
+                                }]
+                            }
+                        ))
+                    }
+                    // ADDING A STOCK TO PORTFOLIO
+                    else {
+                        let tickerName = stock.rowIds[stock.rowIds.length - 1]
+                        let colors = randomRgba()
+                        setUserPortfolioData(prevPortData => ({
+                            labels: [...prevPortData.labels, tickerName],
+                            datasets: [{
+                                data: [...prevPortData.datasets[0].data, 10],
+                                backgroundColor: [...prevPortData.datasets[0].backgroundColor],
+                                borderColor: [...prevPortData.datasets[0].borderColor],
+                            }]
+                        }))
+
+                    }
+                    setCurrPortLength(stock.rowIds.length - 1)
+
                 }}
                 showToolbar
                 components={{
                     Toolbar: GridToolbar
                 }}
             />
-            <Doughnut data={data}></Doughnut>
-            
-             
+            <Doughnut data={userPortfolioData}></Doughnut>
+
+
         </div>
 
     )
