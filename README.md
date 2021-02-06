@@ -1,6 +1,6 @@
-<div align="center">
-  <h1>Landr</h1>
-</div>
+<p align="center">
+    <img alt="Landr Logo" src="assets/landrlogo.png">
+</p>
 
 <p align="center">
  <a href="https://www.python.org/downloads/release/python-375/" target="_blank">
