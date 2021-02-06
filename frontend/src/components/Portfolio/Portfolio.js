@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Grid,  Tooltip, Typography } from '@material-ui/core'
+import { Accordion, AccordionDetails, AccordionSummary, Button, Card, CardContent, Grid, IconButton, Tooltip, Typography } from '@material-ui/core'
 
-import { DataGrid, GridToolbar } from '@material-ui/data-grid';
+import { AddIcon, CloseIcon, DataGrid, GridToolbar } from '@material-ui/data-grid';
 import { Doughnut } from 'react-chartjs-2'
+import RemoveIcon from '@material-ui/icons/Remove';
 
 const columns = [
     { field: 'id', headerName: 'Ticker', width: 100 },
@@ -28,18 +29,6 @@ const columns = [
     },
 ];
 
-
-const randomRgba = () => {
-    var o = Math.round, r = Math.random, s = 255;
-    let red = o(r() * s)
-    let green = o(r() * s)
-    let blue = o(r() * s)
-
-    return {
-        unfilled: 'rgba(' + red + ',' + green + ',' + blue + ',' + .2 + ')',
-        filled: 'rgba(' + red + ',' + green + ',' + blue + ',' + 1 + ')',
-    };
-}
 
 
 export const Portfolio = () => {
@@ -109,6 +98,8 @@ export const Portfolio = () => {
     })
     const [currPortLength, setCurrPortLength] = useState(0)
 
+    const [tickSharePair, setTickSharePair] = useState({})
+
     useEffect(() => {
         if (!stockDataFetched) {
             // FETCH ALL STOCK DATA HERE
@@ -174,7 +165,9 @@ export const Portfolio = () => {
 
                 checkboxSelection
                 onSelectionChange={stock => {
+                    console.log(stock)
                     if (stock.rowIds.length === 0) {
+                        setTickSharePair({})
                         setUserPortfolioData(prevPortData => (
                             {
                                 labels: [],
@@ -206,7 +199,14 @@ export const Portfolio = () => {
                     }
                     // SUBTRACTING A STOCK FROM PORFTOLIO
                     else if (stock.rowIds.length - 1 < currPortLength) {
-
+                        let currentSet = new Set(stock.rowIds)
+                        let oldSet = userPortfolioData.labels.filter(ticker => !currentSet.has(ticker))
+                        console.log(oldSet)
+                        let oldTicker = oldSet[0]
+                        let temp = tickSharePair
+                        delete temp[oldTicker]
+                        console.log(temp)
+                        setTickSharePair(temp)
                         setUserPortfolioData(prevPortData => (
                             {
                                 labels: stock.rowIds,
@@ -221,18 +221,21 @@ export const Portfolio = () => {
                     // ADDING A STOCK TO PORTFOLIO
                     else {
                         let tickerName = stock.rowIds[stock.rowIds.length - 1]
-                        
+                        setTickSharePair({ ...tickSharePair, [tickerName]: 10 })
+
                         setUserPortfolioData(prevPortData => ({
                             labels: [...prevPortData.labels, tickerName],
                             datasets: [{
-                                data: [...prevPortData.datasets[0].data, 10],
+                                data: [...prevPortData.datasets[0].data, tickSharePair[[tickerName]]],
                                 backgroundColor: [...prevPortData.datasets[0].backgroundColor],
                                 borderColor: [...prevPortData.datasets[0].borderColor],
                             }]
                         }))
-                        setCurrPortLength(stock.rowIds.length - 1)
+
 
                     }
+                    console.log(tickSharePair)
+                    setCurrPortLength(stock.rowIds.length - 1)
                 }}
                 showToolbar
                 components={{
@@ -254,8 +257,26 @@ export const Portfolio = () => {
                                     <Accordion>
                                         <AccordionSummary>
                                             <Typography variant="h5">
-                                                {ticker}
+                                                {ticker} -- {tickSharePair.[ticker]} shares
                                             </Typography>
+                                            <IconButton
+                                                onClick={e => {
+                                                    e.stopPropagation()
+                                                    let oldCount = tickSharePair.[ticker]
+                                                    setTickSharePair({...tickSharePair, [ticker]: oldCount + 1})
+                                                }}
+                                                onFocus={(event) => event.stopPropagation()}>
+                                                <AddIcon />
+                                            </IconButton>
+                                            <IconButton
+                                                onClick={e => {
+                                                    e.stopPropagation()
+                                                    let oldCount = tickSharePair.[ticker]
+                                                    setTickSharePair({...tickSharePair, [ticker]: oldCount - 1})
+                                                }}
+                                                onFocus={(event) => event.stopPropagation()}>
+                                                <RemoveIcon />
+                                            </IconButton>
                                         </AccordionSummary>
                                         <AccordionDetails>
 
@@ -263,9 +284,10 @@ export const Portfolio = () => {
                                                 stockData.filter((stock) => {
                                                     return stock.id === ticker
                                                 }).map(stock => {
-                                                    console.log(stock)
+
                                                     return (
                                                         <div>
+
                                                             <Tooltip title="The name of the company">
                                                                 <Typography>
                                                                     Company: {stock.Name}
