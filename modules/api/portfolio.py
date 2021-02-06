@@ -13,7 +13,7 @@ portfolio_api_bp = Blueprint('portfolio_api_bp', __name__, url_prefix='/api/port
 @portfolio_api_bp.route('/get_all_tickers', methods=['GET'])
 @cross_origin()
 def get_all_tickers():
-    with open('feb2eod.json') as f:
+    with open('static_data/feb2eod.json') as f:
         data = json.load(f)
     return jsonify(data['info'])
 
