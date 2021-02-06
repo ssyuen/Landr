@@ -32,7 +32,7 @@ def get_tickers():
     for symbol in symbol_list:
         ticker_info = finnhub_client.company_basic_financials(symbol, metric='all')
         ll.append({
-            symbol: ticker_info
+            symbol: ticker_info['metric']
         })
 
     return jsonify(ll)
