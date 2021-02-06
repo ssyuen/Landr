@@ -52,6 +52,7 @@ export const Navbar = () => {
                             <Tabs className={classes.fullHeight} onChange={handleChange} value={value}>
                                 <Tab className={classes.fullHeight} label="Home" icon={<HomeIcon />} value="home" to='/Home' component={Link} />
                                 <Tab className={classes.fullHeight} label="Portfolio" icon={<FolderIcon />} value="portfolio" to='/Portfolio' component={Link} />
+                                <Tab className={classes.fullHeight} label="About" icon={<FolderIcon />} value="about" to='/About' component={Link} />
                                 <Tab className={classes.fullHeight} label="Profile" icon={<AccountBoxIcon />} value="profile" to='/Profile' component={Link} />
                             </Tabs>
                         </Grid>

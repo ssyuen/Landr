@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     // },
     header: {
         width: '100%',
-        marginTop: theme.spacing(6),
+        marginTop: theme.spacing(3),
         marginLeft: theme.spacing(2),
         marginBottom: theme.spacing(10),
     },
