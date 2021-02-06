@@ -9,5 +9,8 @@ verify_ssl = true
 flask = "*"
 requests = "*"
 
+[scripts]
+server = "python server.py"
+
 [requires]
 python_version = "3.7"
