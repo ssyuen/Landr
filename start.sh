@@ -1,4 +1,4 @@
-export FLASK_DEBUG=1
+export FLASK_DEBUG=0
 export FLASK_APP=server:create_server
 
 flask run --host=localhost --port=12000 &
