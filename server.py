@@ -1,10 +1,13 @@
 from flask import Flask
+from flask_cors import CORS
 import secrets
 
 
 def create_server():
     app = Flask(__name__)
-    
+    cors = CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
+
     with app.app_context():
         
         # secret_key generation

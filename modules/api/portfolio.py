@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_cors import cross_origin
 import finviz
 import finnhub
 import json
@@ -10,6 +11,7 @@ portfolio_api_bp = Blueprint('portfolio_api_bp', __name__, url_prefix='/api/port
 
 
 @portfolio_api_bp.route('/get_all_tickers', methods=['GET'])
+@cross_origin()
 def get_all_tickers():
     with open('feb2eod.json') as f:
         data = json.load(f)
@@ -17,6 +19,7 @@ def get_all_tickers():
 
 
 @portfolio_api_bp.route('/get_tickers', methods=['GET'])
+@cross_origin()
 def get_ticker():
     param = request.args.get('symbols')
     symbol_list = param.split(",")
