@@ -20,7 +20,7 @@ def get_all_tickers():
 
 @portfolio_api_bp.route('/get_tickers', methods=['GET'])
 @cross_origin()
-def get_ticker():
+def get_tickers():
     param = request.args.get('symbols')
     if not param:
         abort(400)
