@@ -40,20 +40,36 @@ when many people are beginning to invest their money into the market, and we bel
 educates them about certain important performance metrics while holding to account risk and portfolio sustainability.
 
 ## Introduction
-Replace
+Landr is a web application that allows an individual to build their portfolio. They can choose a variety of stocks by
+searching or filtering by price, sector, name, and other variables. Landr also provides very unique information such
+as a ticker ESG (Environment, Social and Governance) risk rating and overall sustainability score. Landr also provides
+the same information to your portfolio by aggregating risk and weighting share amounts. In addition to sustainability,
+the platform provides news sentiment whether your portfolio has bullish or bearish sentiment based off the news.
 
 ## Audience
 Our target audience is anybody who is looking to invest their money responsibly while remaining educated about
 the risks and rewards of their investments.
 
 ### Landr platform structure
-Replace
+The frontend stack of Landr was created with React.js and various other libraries for data visualization. The backend
+stack was created using Python 3 and Flask. Landr is a responsive application by virtue of the front end stack.
 
 ## Key Challenges
-Replace
+Our main challenges included Data Visualization and API access. There are many free API's which give plenty of information.
+We decided that we did not want to simply query the information and display it to the user. Factors such as sustainability
+risk, controversy, and news sentiment are aggregated and weighted based on various factors of your portfolio such as
+number of shares, share price, and total portfolio value.
 
-## How we utilized APIs through our demo
-Replace
+### Important Note
+**The initial data shown on the 'Build Your Portfolio' table is EOD S&P 500 stock information from Friday, February 5**. 
+This could easily have been replaced with live data, but we encountered API restrictions for daily call limits.
+
+## How we utilized APIs and other tools through our demo
+- **Finnhub.io** for ticker information and basic company financials
+- **Finviz** for certain ticker visuals
+- **BeautifulSoup** + **Selenium** for web-scraping Yahoo ESG risk data for a single ticker
+- **RapidApi** + **ESG Data (esg.enterprise.app)** for ESG total scores for a single ticker
+- **D3** Charts for Data visualization
 
 ## How we would like to improve Landr in the future
 Replace
