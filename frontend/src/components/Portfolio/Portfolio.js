@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { Accordion, AccordionDetails, AccordionSummary, Button, Card, CardContent, Grid, IconButton, Tooltip, Typography } from '@material-ui/core'
 
@@ -29,9 +29,22 @@ const columns = [
     },
 ];
 
+function reducer(state, action) {
+    switch (action.type) {
 
+    }
+}
 
 export const Portfolio = () => {
+    const addingStock = useRef(false)
+    const addedStock = useRef('')
+
+    const updatingStock = useRef(false)
+    const updatedStock = useRef('')
+
+    const increment = useRef(false)
+    const decrement = useRef(false)
+
     const [stockData, setStockData] = useState([])
     const [stockDataFetched, setStockDataFetched] = useState(false)
 
@@ -149,7 +162,54 @@ export const Portfolio = () => {
 
         }
 
+
+
     })
+    useEffect(() => {
+        if (addingStock.current) {
+            setUserPortfolioData(prevPortData => ({
+                labels: [...prevPortData.labels, addedStock.current],
+                datasets: [{
+                    data: [...prevPortData.datasets[0].data, tickSharePair[[addedStock.current]]],
+                    backgroundColor: [...prevPortData.datasets[0].backgroundColor],
+                    borderColor: [...prevPortData.datasets[0].borderColor],
+                }]
+            }))
+            addingStock.current = false;
+        }
+        
+        if (updatingStock.current) {
+            if(increment.current){
+                console.log('increment')
+                let temp = {...userPortfolioData}
+                let indexOfStock = temp.labels.indexOf(updatedStock.current)
+                let count = temp.datasets[0].data[indexOfStock]
+                count += 1
+                temp.datasets[0].data[indexOfStock] = count
+                setUserPortfolioData(temp)
+                increment.current = false
+            }
+            if(decrement.current){
+                let temp = {...userPortfolioData}
+                let indexOfStock = temp.labels.indexOf(updatedStock.current)
+                let count = temp.datasets[0].data[indexOfStock]
+                count -= 1
+                temp.datasets[0].data[indexOfStock] = count
+                setUserPortfolioData(temp)
+                decrement.current = false
+            }
+            
+            // setUserPortfolioData(prevPortData => ({
+            //     labels: [...prevPortData.labels],
+            //     datasets: [{
+            //         data: [...prevPortData.datasets[0].data, tickSharePair[[updatedStock.current]]],
+            //         backgroundColor: [...prevPortData.datasets[0].backgroundColor],
+            //         borderColor: [...prevPortData.datasets[0].borderColor],
+            //     }]
+            // }))
+            updatingStock.current = false;
+        }
+    }, [tickSharePair])
 
 
 
@@ -165,7 +225,7 @@ export const Portfolio = () => {
 
                 checkboxSelection
                 onSelectionChange={stock => {
-                    console.log(stock)
+
                     if (stock.rowIds.length === 0) {
                         setTickSharePair({})
                         setUserPortfolioData(prevPortData => (
@@ -201,11 +261,11 @@ export const Portfolio = () => {
                     else if (stock.rowIds.length - 1 < currPortLength) {
                         let currentSet = new Set(stock.rowIds)
                         let oldSet = userPortfolioData.labels.filter(ticker => !currentSet.has(ticker))
-                        console.log(oldSet)
+
                         let oldTicker = oldSet[0]
                         let temp = tickSharePair
                         delete temp[oldTicker]
-                        console.log(temp)
+
                         setTickSharePair(temp)
                         setUserPortfolioData(prevPortData => (
                             {
@@ -222,19 +282,20 @@ export const Portfolio = () => {
                     else {
                         let tickerName = stock.rowIds[stock.rowIds.length - 1]
                         setTickSharePair({ ...tickSharePair, [tickerName]: 10 })
-
-                        setUserPortfolioData(prevPortData => ({
-                            labels: [...prevPortData.labels, tickerName],
-                            datasets: [{
-                                data: [...prevPortData.datasets[0].data, tickSharePair[[tickerName]]],
-                                backgroundColor: [...prevPortData.datasets[0].backgroundColor],
-                                borderColor: [...prevPortData.datasets[0].borderColor],
-                            }]
-                        }))
+                        addingStock.current = true;
+                        addedStock.current = tickerName;
+                        // setUserPortfolioData(prevPortData => ({
+                        //     labels: [...prevPortData.labels, tickerName],
+                        //     datasets: [{
+                        //         data: [...prevPortData.datasets[0].data, tickSharePair[[tickerName]]],
+                        //         backgroundColor: [...prevPortData.datasets[0].backgroundColor],
+                        //         borderColor: [...prevPortData.datasets[0].borderColor],
+                        //     }]
+                        // }))
 
 
                     }
-                    console.log(tickSharePair)
+
                     setCurrPortLength(stock.rowIds.length - 1)
                 }}
                 showToolbar
@@ -263,7 +324,10 @@ export const Portfolio = () => {
                                                 onClick={e => {
                                                     e.stopPropagation()
                                                     let oldCount = tickSharePair.[ticker]
-                                                    setTickSharePair({...tickSharePair, [ticker]: oldCount + 1})
+                                                    setTickSharePair({ ...tickSharePair, [ticker]: oldCount + 1 })
+                                                    updatingStock.current = true;
+                                                    updatedStock.current = ticker;
+                                                    increment.current = true;
                                                 }}
                                                 onFocus={(event) => event.stopPropagation()}>
                                                 <AddIcon />
@@ -272,7 +336,10 @@ export const Portfolio = () => {
                                                 onClick={e => {
                                                     e.stopPropagation()
                                                     let oldCount = tickSharePair.[ticker]
-                                                    setTickSharePair({...tickSharePair, [ticker]: oldCount - 1})
+                                                    setTickSharePair({ ...tickSharePair, [ticker]: oldCount - 1 })
+                                                    updatingStock.current = true;
+                                                    updatedStock.current = ticker;
+                                                    decrement.current = true;
                                                 }}
                                                 onFocus={(event) => event.stopPropagation()}>
                                                 <RemoveIcon />
