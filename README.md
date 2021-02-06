@@ -38,6 +38,8 @@ For the UGAHacks **BlackRock** challenge, we wanted to build a platform that wou
 portfolio with helpful tooltips and information with sustainable investments in mind. This project comes at a time
 when many people are beginning to invest their money into the market, and we believe Landr, pronounced as Lander,
 educates them about certain important performance metrics while holding to account risk and portfolio sustainability.
+We chose the name Lander because of the recent investing frenzy of going to the moon. We hope Landr will help land you
+on the moon and land you a great portfolio.
 
 ## Introduction
 Landr is a web application that allows an individual to build their portfolio. They can choose a variety of stocks by
@@ -71,8 +73,10 @@ This could easily have been replaced with live data, but we encountered API rest
 - **RapidApi** + **ESG Data (esg.enterprise.app)** for ESG total scores for a single ticker
 - **D3** Charts for Data visualization
 
-## How we would like to improve Landr in the future
-Replace
+## How would we improve Landr?
+Given more time, our team would have loved to incorporate a more immersive and user centric design. This would mean
+the ability to save portfolios and preferences to a cloud instance. Furthermore, we would have loved to add creative
+and unique data from other APIs to really tailor information based on the user's interests.
 
 # Technical? Run it yourself!
 
