@@ -46,7 +46,7 @@ export const Navbar = () => {
             <AppBar position="static" style={{ background: "#212121" }}>
                 <Toolbar>
                     <Link to='/Home'>
-                        <img className={classes.logo} src={logo} />
+                        <img className={classes.logo} src={logo} value="home" onClick={handleChange}/>
                     </Link>
                     <Grid container alignItems="center" justify="space-between">
                         <Grid item>
