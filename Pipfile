@@ -13,6 +13,7 @@ finnhub-python = "*"
 flask-cors = "*"
 selenium = "*"
 beautifulsoup4 = "*"
+typing-extensions = "*"
 
 [scripts]
 server = "start.sh"
