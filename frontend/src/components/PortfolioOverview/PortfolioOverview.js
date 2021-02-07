@@ -14,12 +14,13 @@ export const PortfolioOverview = (props) => {
     });
     symbols = symbols.substring(0, symbols.length - 1);
     
+    
     // for(const [key, value] of Object.entries(tickSharePair)) {
     //     symbols += key + '|' + tickSharePair[key] + '|' + stock
     // }
 
-    const SUS_URL = `http://localhost:5000/api/sustainability/esg_all?symbols=${symbols}&totalPortfolioValue=${totalValue}`
-    const SENTIMENT_URL = `http://localhost:5000/api/news/get_total_sentiment?symbols=${symbols}&totalPortfolioValue=${totalValue}`
+    const SUS_URL = `http://localhost:5000/api/sustainability/esg_all?symbols=${symbols}&totalPortfolioValue=${totalValue.toFixed(2)}`
+    const SENTIMENT_URL = `http://localhost:5000/api/news/get_total_sentiment?symbols=${symbols}&totalPortfolioValue=${totalValue.toFixed(2)}`
 
 
     const [portDataFetched, setPortDataFetched] = useState(false)
