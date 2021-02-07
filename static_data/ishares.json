@@ -1,38 +1,121 @@
 {
-  "SUSA": {
-    "52W Range": "47.60 - 85.91",
-    "Name": "iShares MSCI USA ESG Select ETF",
-    "Ticker": "SUSA",
-    "Price": "$85.91",
-    "YTD Return": "3.92%",
-    "Holdings": "201",
-    "P/E Ratio": "29.43",
-    "Net Assets": "$2,555,832,467",
-    "MSCI ESG Fund Rating": "A",
-    "Why": "Obtain exposure to a range of large- and mid-cap U.S. stocks with leading environmental, social, and governance practices"
-  },
-  "ICLN": {
-    "52W Range": "8.29 - 33.20",
-    "Name": "iShares Global Clean Energy ETF",
-    "Ticker": "ICLN",
-    "Price": "$31.10",
-    "YTD Return": "9.85%",
-    "Holdings": "30",
-    "P/E Ratio": "44.53",
-    "Net Assets": "$$6,963,553,405",
-    "MSCI ESG Fund Rating": "AA",
-    "Why": "Exposure to companies that produce energy from solar, wind, and other renewable sources"
-  },
-  "SDG": {
-    "52W Range": "50.94 - 99.32",
-    "Name": "iShares MSCI Global Impact ETF",
-    "Ticker": "SDG",
-    "Price": "$97.21",
-    "YTD Return": "3.96%",
-    "Holdings": "133",
-    "P/E Ratio": "22.73",
-    "Net Assets": "$383,978,656",
-    "MSCI ESG Fund Rating": "AA",
-    "Why": "Obtain exposure to global stocks aiming to advance themes related to the United Nation’s Sustainable Development Goals, such as education or climate change"
-  }
+  "items": [
+    {
+      "52W Range": "47.60 - 85.91",
+      "Name": "iShares MSCI USA ESG Select ETF",
+      "Ticker": "SUSA",
+      "Price": "$85.91",
+      "YTD Return": "3.92%",
+      "Holdings": "201",
+      "P/E Ratio": "29.43",
+      "Net Assets": "$2,555,832,467",
+      "MSCI ESG Fund Rating": "A",
+      "Why": "Obtain exposure to a range of large- and mid-cap U.S. stocks with leading environmental, social, and governance practices",
+      "Five Risk": "5"
+    },
+    {
+      "52W Range": "8.29 - 33.20",
+      "Name": "iShares Global Clean Energy ETF",
+      "Ticker": "ICLN",
+      "Price": "$31.10",
+      "YTD Return": "9.85%",
+      "Holdings": "30",
+      "P/E Ratio": "44.53",
+      "Net Assets": "$6,963,553,405",
+      "MSCI ESG Fund Rating": "AA",
+      "Why": "Exposure to companies that produce energy from solar, wind, and other renewable sources",
+      "Five Risk": "8"
+    },
+    {
+      "52W Range": "50.94 - 99.32",
+      "Name": "iShares MSCI Global Impact ETF",
+      "Ticker": "SDG",
+      "Price": "$97.21",
+      "YTD Return": "3.96%",
+      "Holdings": "133",
+      "P/E Ratio": "22.73",
+      "Net Assets": "$383,978,656",
+      "MSCI ESG Fund Rating": "AA",
+      "Why": "Obtain exposure to global stocks aiming to advance themes related to the United Nation’s Sustainable Development Goals, such as education or climate change",
+      "Five Risk": "5"
+    },
+    {
+      "52W Range": "9.93 - 17.67",
+      "Name": "BlackRock Advantage ESG U.S. Equity Fund",
+      "Ticker": "BIRIX",
+      "Price": "$17.67",
+      "YTD Return": "4.25%",
+      "Holdings": "225",
+      "P/E Ratio": "28.04",
+      "Net Assets": "$143,500,000",
+      "MSCI ESG Fund Rating": "A",
+      "Why": "The BlackRock Advantage ESG U.S. Equity Fund enables investors to do more with their money than simply seeking a financial return",
+      "Five Risk": "7"
+    },
+    {
+      "52W Range": "42.29 - 74.53",
+      "Name": "iShares MSCI KLD 400 Social ETF",
+      "Ticker": "DSI",
+      "Price": "$74.53",
+      "YTD Return": "3.75%",
+      "Holdings": "402",
+      "P/E Ratio": "29.84",
+      "Net Assets": "$2,724,130,076",
+      "MSCI ESG Fund Rating": "A",
+      "Why": "Obtain exposure to a range of large-, mid- and small-cap U.S. stocks with leading environmental, social, and governance practices",
+      "Five Risk": "4"
+    },
+    {
+      "52W Range": "46.00 - 75.55",
+      "Name": "iShares ESG Aware MSCI EAFE ETF",
+      "Ticker": "ESGD",
+      "Price": "$74.34",
+      "YTD Return": "0.76%",
+      "Holdings": "485",
+      "P/E Ratio": "19.61",
+      "Net Assets": "$4,341,238,853",
+      "MSCI ESG Fund Rating": "AA",
+      "Why": "Obtain exposure to large- and mid-cap stocks in Europe, Australia, Asia and the Far East with favorable environmental, social and governance (ESG) practices",
+      "Five Risk": "2"
+    },
+    {
+      "52W Range": "24.45 - 46.04",
+      "Name": "iShares ESG Aware MSCI EM ETF",
+      "Ticker": "ESGE",
+      "Price": "$45.41",
+      "YTD Return": "7.54%",
+      "Holdings": "341",
+      "P/E Ratio": "19.45",
+      "Net Assets": "$7,147,536,073",
+      "MSCI ESG Fund Rating": "A",
+      "Why": "Obtain exposure to large- and mid-cap emerging market stocks with favorable environmental, social and governance (ESG) practices",
+      "Five Risk": "2"
+    },
+    {
+      "52W Range": "88.78 - 154.66",
+      "Name": "iShares MSCI ACWI Low Carbon Target ETF",
+      "Ticker": "CRBN",
+      "Price": "$154.66",
+      "YTD Return": "3.13%",
+      "Holdings": "1,376",
+      "P/E Ratio": "23.51",
+      "Net Assets": "$672,757,295",
+      "MSCI ESG Fund Rating": "A",
+      "Why": "Obtain exposure to a broad range of global stocks that are less dependent on fossil fuels",
+      "Five Risk": "3"
+    },
+    {
+      "52W Range": "17.17 - 37.73",
+      "Name": "iShares ESG Aware MSCI USA Small-Cap ETF",
+      "Ticker": "ESML",
+      "Price": "$37.73",
+      "YTD Return": "9.23%",
+      "Holdings": "1,036",
+      "P/E Ratio": "22.57",
+      "Net Assets": "$611,253,435",
+      "MSCI ESG Fund Rating": "BBB",
+      "Why": "Obtain exposure to small-cap U.S. stocks with favorable environmental, social and governance (ESG) practices",
+      "Five Risk": "6"
+    }
+  ]
 }
