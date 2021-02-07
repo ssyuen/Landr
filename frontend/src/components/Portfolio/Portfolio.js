@@ -124,7 +124,7 @@ export const Portfolio = () => {
     useEffect(() => {
         if (!stockDataFetched) {
             // FETCH ALL STOCK DATA HERE
-            fetch('/api/portf/get_all_tickers', {
+            fetch('http://35.194.74.101:5000/api/portf/get_all_tickers', {
                 method: 'GET',
                 mode: 'cors',
             })

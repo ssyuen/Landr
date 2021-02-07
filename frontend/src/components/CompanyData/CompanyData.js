@@ -3,8 +3,8 @@ import { Accordion, AccordionDetails, AccordionSummary, Button, Card, CardConten
 
 
 export const CompanyData = (props) => {
-    const SENTIMENT_URL = '/api/news/get_sentiment?symbol='
-    const SUS_URL = '/api/sustainability/esg?symbol='
+    const SENTIMENT_URL = 'http://35.194.74.101:5000/api/news/get_sentiment?symbol='
+    const SUS_URL = 'http://35.194.74.101:5000/api/sustainability/esg?symbol='
 
     const { stock } = props;
 

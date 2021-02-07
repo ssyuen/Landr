@@ -19,8 +19,8 @@ export const PortfolioOverview = (props) => {
     //     symbols += key + '|' + tickSharePair[key] + '|' + stock
     // }
 
-    const SUS_URL = `/api/sustainability/esg_all?symbols=${symbols}&totalPortfolioValue=${totalValue.toFixed(2)}`
-    const SENTIMENT_URL = `/api/news/get_total_sentiment?symbols=${symbols}&totalPortfolioValue=${totalValue.toFixed(2)}`
+    const SUS_URL = `http://35.194.74.101:5000/api/sustainability/esg_all?symbols=${symbols}&totalPortfolioValue=${totalValue.toFixed(2)}`
+    const SENTIMENT_URL = `http://35.194.74.101:5000/api/news/get_total_sentiment?symbols=${symbols}&totalPortfolioValue=${totalValue.toFixed(2)}`
 
 
     const [portDataFetched, setPortDataFetched] = useState(false)
