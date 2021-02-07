@@ -278,10 +278,15 @@ export const Portfolio = () => {
                         let oldSet = userPortfolioData.labels.filter(ticker => !currentSet.has(ticker))
 
                         var oldInd = 0
-                        for (let i = 0; i < stock.rowIds.length; i++) {
-                            if (stock.rowIds[i].localeCompare(oldSet[0])) {
-                                // console.log('found at ', i)
+                        console.log('looking for ', oldSet[0])
+                        console.log(userPortfolioData.labels)
+                        for (let i = 0; i < userPortfolioData.labels.length; i++) {
+                            console.log(userPortfolioData.labels[i])
+                            console.log(userPortfolioData.labels[i].localeCompare(oldSet[0]))
+                            if (userPortfolioData.labels[i] === oldSet[0]) {
+                                console.log('found at ', i)
                                 oldInd = i
+                                break
                             }
 
                         }
