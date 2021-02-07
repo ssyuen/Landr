@@ -20,7 +20,7 @@ export const Learning = () => {
     const [fetchedData, setFetchedData] = useState({})
     const [recData, setRecData] = useState({})
     const [remainingData, setRemainingData] = useState([])
-    const [reset,setReset] = useState(true);
+    const [reset, setReset] = useState(true);
 
     const [monthlyIncome, setMonthlyIncome] = useState(0)
     const [riskLevel, setRiskLevel] = useState('balanced')
@@ -29,8 +29,8 @@ export const Learning = () => {
     const classes = useStyles();
     const [value, setValue] = React.useState(30);
     const handleSliderChange = (event, newValue) => {
-        if (newValue > 50) {
-            setValue(50)
+        if (newValue > 100) {
+            setValue(100)
         }
         else {
             setValue(newValue);
@@ -43,8 +43,8 @@ export const Learning = () => {
     const handleBlur = () => {
         if (value < 1) {
             setValue(1);
-        } else if (value > 50) {
-            setValue(50);
+        } else if (value > 100) {
+            setValue(100);
         }
     };
 
@@ -65,7 +65,7 @@ export const Learning = () => {
             })
     }
 
-    const handleReset = () =>{
+    const handleReset = () => {
         setReset(!reset)
         setMonthlyIncome(0)
         setRiskLevel('balanced')
@@ -76,8 +76,14 @@ export const Learning = () => {
         <div className={classes.header}>
             <Grid container spacing="3">
                 <Grid item xs>
-                    <Typography variant="h6" component="h6">
-                        Sustainable Investments are the future of investing as we move toward an environmental, social, and governance sustainability. BlackRock offers a variety of sustainable investment equities which allow you to grow your money over a period of time. An ETF, or exchange traded fund, is one of these investment securities which are a diverse collection of stocks from many sectors.
+                    <Typography variant="h2">
+                        Learning
+                    </Typography>
+                    <Typography style={{paddingTop:'20px'}}>
+                        Sustainable Investments are the future of investing as we move toward an environmental, social, and governance sustainability. BlackRock offers a variety of sustainable investment equities which allow you to grow your money over a period of time. An ETF, or exchange traded fund, is one of these investment securities which are a diverse collection of stocks from many sectors. 
+                    </Typography>
+                    <Typography style={{paddingTop:'10px'}} >
+                    To view the best sustainable BlackRock ETF for you, check out our calculator below. Input your estimated monthly earnings, your monthly savings percentage, and  whether you'd like a low, balanced, or high risk return. Lower risk ETFs have lower returns and vice versa.
                     </Typography>
                     <Paper style={{ padding: '10px', marginTop: '50px' }}>
                         <Grid container>
@@ -122,7 +128,7 @@ export const Learning = () => {
                                 <Typography>
                                     Based off the three parameters, we aim to introduce the most ideal ETF for your current standings.
                                 </Typography>
-                                <Button disabled={monthlyIncome === 0 ? true : false} variant="contained" color="primary" className={classes.button} onClick={handleSubmit}>
+                                <Button disabled={monthlyIncome === 0 ? true : false} style={{ marginTop: '90px', float: 'right' }} variant="contained" color="primary" className={classes.button} onClick={handleSubmit}>
                                     Submit
                                 </Button>
                             </Grid>
@@ -132,19 +138,16 @@ export const Learning = () => {
                 </Grid>
                 <Grid item xs>
                     {console.log(Object.keys(fetchedData) === 0)}
-                    {reset ?  <div></div> :
+                    {reset ? <div></div> :
 
                         <div>
-                            <Typography variant="h3">
-                                Recommended Fund
+                            <Typography variant="h4">
+                                Your Recommended Fund
                             </Typography>
                             <Card style={{ padding: '10px' }}>
                                 <CardContent>
-                                    <Typography variant="h3">
-                                        {recData.Name} ({recData.Ticker})
-                                    </Typography>
-                                    <Typography variant="h5">
-                                        Price: {recData.Price}
+                                    <Typography variant="h4">
+                                        {recData.Name} ({recData.Ticker}) | {recData.Price}
                                     </Typography>
                                     <Typography variant="h5">
                                         Net Assets: {recData['Net Assets']}
@@ -152,12 +155,9 @@ export const Learning = () => {
                                     <Typography variant="h5">
                                         P/E Ratio: {recData['P/E Ratio']}
                                     </Typography>
-                                    <Typography variant="h5">
-                                        P/E Ratio: {recData['P/E Ratio']}
-                                    </Typography>
-                                    <Typography variant="h3">
+                                    <Typography variant="h4" style={{ paddingTop: '15px' }}>
                                         Why should you buy into it?
-                                </Typography>
+                                            </Typography>
                                     <Typography variant="h6">
                                         {recData.Why}
                                     </Typography>
@@ -165,18 +165,15 @@ export const Learning = () => {
                                 </CardContent>
                                 <Button variant="contained" onClick={handleReset}>Reset Calculator</Button>
                             </Card>
-                            <Typography variant="h3">
+                            <Typography variant="h4" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                                 Remaining Funds
                             </Typography>
                             {remainingData.map(etf => {
                                 return (
                                     <Accordion>
                                         <AccordionSummary>
-                                            <Typography variant="h3">
-                                                {etf.Name} ({etf.Ticker})
-                                            </Typography>
                                             <Typography variant="h5">
-                                                Price: {etf.Price}
+                                                {etf.Name} ({etf.Ticker}) | {etf.Price}
                                             </Typography>
 
                                         </AccordionSummary>
@@ -192,7 +189,7 @@ export const Learning = () => {
                                                     <Typography variant="h5">
                                                         P/E Ratio: {etf['P/E Ratio']}
                                                     </Typography>
-                                                    <Typography variant="h3">
+                                                    <Typography variant="h4" style={{ paddingTop: '15px' }}>
                                                         Why should you buy into it?
                                             </Typography>
                                                     <Typography variant="h6">

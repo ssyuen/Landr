@@ -229,7 +229,7 @@ export const Portfolio = () => {
         <div style={{ height: '600px', padding: '25px' }}>
             <div className={classes.header}>
                 <Typography variant="h2" component="h2" gutterBottom>
-                    Build Your Portfolio!
+                    Build your Portfolio!
                 </Typography>
             </div>
             <DataGrid
