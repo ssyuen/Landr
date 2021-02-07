@@ -13,7 +13,7 @@ export const PortfolioOverview = (props) => {
         totalValue += tickSharePair[obj.id] * obj.price
     });
     symbols = symbols.substring(0, symbols.length - 1);
-    console.log(symbols)
+    
     // for(const [key, value] of Object.entries(tickSharePair)) {
     //     symbols += key + '|' + tickSharePair[key] + '|' + stock
     // }
@@ -73,7 +73,7 @@ export const PortfolioOverview = (props) => {
                 setSentData(data)
                 setBull(bull + data.bullish_sentiment)
                 setLoadingSent(() => {
-                    console.log(loadingSent)
+                    
                     return !loadingSent
                 })
             })
