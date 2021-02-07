@@ -47,10 +47,10 @@ export const About = () => {
                     About LANDR
                 </Typography>
                 <Typography variant="subtitle1" gutterBottom>
-                    Under construction
+                    Built for UGA Hacks 6
                 </Typography>
             </div>
-            <Grid container direction="column" alignItems="center" justify="center" spacing={0}>
+            <Grid container direction="column" justify="center" spacing={0}>
                 <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-right">
                         <CardContent>
@@ -96,7 +96,7 @@ export const About = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={12}>
-                    <Card className={classes.card} data-aos="zoom-in-right">
+                    <Card className={classes.card} data-aos="zoom-in-left">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                                 Landr Platform Structure
@@ -120,7 +120,7 @@ export const About = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={12}>
-                    <Card className={classes.card} data-aos="zoom-in-right">
+                    <Card className={classes.card} data-aos="zoom-in-left">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                                 Important Note
@@ -138,11 +138,26 @@ export const About = () => {
                                 How we utilized APIs and other tools through our demo
                                 </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                Finnhub.io for ticker information and basic company financials
-                                Finviz for certain ticker visuals
-                                BeautifulSoup + Selenium for web-scraping Yahoo ESG risk data for a single ticker
-                                RapidApi + ESG Data (esg.enterprise.app) for ESG total scores for a single ticker
-                                D3 Charts for Data visualization
+                                Finnhub.io for ticker information and basic company financials <br></br>
+                                Finviz for certain ticker visuals <br></br>
+                                BeautifulSoup + Selenium for web-scraping Yahoo ESG risk data for a single ticker <br></br>
+                                RapidApi + ESG Data (esg.enterprise.app) for ESG total scores for a single ticker <br></br>
+                                D3 Charts for Data visualization <br></br>
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12}>
+                    <Card className={classes.card} data-aos="zoom-in-left">
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                            How would we improve Landr?
+                                </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                            Given more time, our team would have loved to incorporate a more immersive and user centric design. 
+                            This would mean the ability to save portfolios and preferences to a cloud instance. 
+                            Furthermore, we would have loved to add creative and unique data from other APIs to really tailor 
+                            information based on the user's interests.
                             </Typography>
                         </CardContent>
                     </Card>
