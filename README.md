@@ -7,22 +7,22 @@
     <img alt="Made with Python" src="https://forthebadge.com/images/badges/made-with-javascript.svg">
   </a>
   
-  <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
+  <a href="https://github.com/ssyuen/Landr/graphs/contributors" target="_blank">
     <img alt="Built with love" src="https://forthebadge.com/images/badges/built-with-love.svg">  
   </a>
   
-   <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
+   <a href="https://github.com/ssyuen/Landr/graphs/contributors" target="_blank">
     <img alt="Gluten Free" src="https://forthebadge.com/images/badges/made-with-crayons.svg">
   </a>
   
   <br>
   
-  <a href="https://github.com/ssyuen/GreenRock/commits/master" target="_blank">
-    <img alt="Last Commit" src="https://img.shields.io/github/last-commit/ssyuen/GreenRock/master.svg?style=for-the-badge">
+  <a href="https://github.com/ssyuen/Landr/commits/master" target="_blank">
+    <img alt="Last Commit" src="https://img.shields.io/github/last-commit/ssyuen/Landr/master.svg?style=for-the-badge">
   </a>
   
-  <a href="https://github.com/ssyuen/GreenRock/graphs/contributors" target="_blank">
-    <img alt="Landr contributors" src="https://img.shields.io/github/contributors/ssyuen/GreenRock.svg?style=for-the-badge">
+  <a href="https://github.com/ssyuen/Landr/graphs/contributors" target="_blank">
+    <img alt="Landr contributors" src="https://img.shields.io/github/contributors/ssyuen/Landr.svg?style=for-the-badge">
   </a>
 </p>
 
