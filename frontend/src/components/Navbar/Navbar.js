@@ -12,8 +12,9 @@ import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
 import logo from '../../Images/landrlogo.png'
-import CardMedia from '@material-ui/core/CardMedia';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
     },
     logo: {
         marginRight: theme.spacing(2),
+        width: 50,
+        height: 15
     },
     fullHeight: {
         ...theme.mixins.toolbar,
@@ -40,20 +43,24 @@ export const Navbar = () => {
 
     return (
         <div className={classes.root} >
-            <AppBar position="static" style={{ background: "#212121" }}>
+            <AppBar title={<Link to='/Home'>
+                                    <image className={classes.logo} src={logo}/>
+                                </Link>} position="static" style={{ background: "#212121" }}>
                 <Toolbar>
                     <Grid container alignItems="center" justify="space-between">
                         <Grid item>
-                            <IconButton edge="start" className={classes.logo} color="inherit" aria-label="Home">
-                                <Typography color="inherit" variant="title">LANDR</Typography>
-                            </IconButton>
+                            {/* <IconButton edge="start" className={classes.logo} color="inherit" aria-label="Home"> */}
+                                
+                                
+                                {/* <Typography color="inherit" variant="title">LANDR</Typography> */}
+                            {/* </IconButton> */}
                         </Grid>
                         <Grid item>
                             <Tabs className={classes.fullHeight} onChange={handleChange} value={value}>
                                 <Tab className={classes.fullHeight} label="Home" icon={<HomeIcon />} value="home" to='/Home' component={Link} />
                                 <Tab className={classes.fullHeight} label="Portfolio" icon={<FolderIcon />} value="portfolio" to='/Portfolio' component={Link} />
-                                <Tab className={classes.fullHeight} label="About" icon={<FolderIcon />} value="about" to='/About' component={Link} />
-                                <Tab className={classes.fullHeight} label="Profile" icon={<AccountBoxIcon />} value="profile" to='/Profile' component={Link} />
+                                <Tab className={classes.fullHeight} label="Learning" icon={<LibraryBooksIcon />} value="learning" to='/Learning' component={Link} />
+                                <Tab className={classes.fullHeight} label="About" icon={<InfoIcon />} value="about" to='/About' component={Link} />
                             </Tabs>
                         </Grid>
                     </Grid>

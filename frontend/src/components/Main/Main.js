@@ -53,13 +53,14 @@ export const Main = () => {
         <div className={classes.background}>
             <div className={classes.header}>
                 <Typography variant="h2" component="h2" gutterBottom>
-                    Build your ESG Portfolio
+                    Build your ESG Portfolio.
                 </Typography>
                 <Typography variant="subtitle1" gutterBottom>
                     Make your portfolio reflect your best vision for our future. Always be thinking ahead. Be optimistic.
                 </Typography>
             </div>
-{/* 
+
+        {/* 
             <CardMedia
                 className={classes.logo}
                 image={logo}
