@@ -171,7 +171,7 @@ export const Portfolio = () => {
 
     useEffect(() => {
         if (addingStock.current) {
-            console.log(userPortfolioData.datasets[0].data,'checking added stock')
+            console.log(userPortfolioData.datasets[0].data, 'checking added stock')
             console.log(tickSharePair, 'checking ticksharepair')
             let temp = userPortfolioData.datasets[0].data
             console.log(temp)
@@ -226,11 +226,11 @@ export const Portfolio = () => {
 
 
     return (
-        <div style={{ height: '600px' }}>
+        <div style={{ height: '600px', padding: '25px' }}>
             <div className={classes.header}>
                 <Typography variant="h2" component="h2" gutterBottom>
                     Build Your Portfolio!
-            </Typography>
+                </Typography>
             </div>
             <DataGrid
                 autoPageSize
@@ -273,7 +273,7 @@ export const Portfolio = () => {
                     }
                     // SUBTRACTING A STOCK FROM PORFTOLIO
                     else if (stock.rowIds.length - 1 < currPortLength) {
-                        
+
                         let currentSet = new Set(stock.rowIds)
                         let oldSet = userPortfolioData.labels.filter(ticker => !currentSet.has(ticker))
 
@@ -295,7 +295,7 @@ export const Portfolio = () => {
                         let temp = tickSharePair
                         delete temp[oldTicker]
                         let oldData = userPortfolioData
-                        oldData.datasets[0].data.splice(oldInd,1)
+                        oldData.datasets[0].data.splice(oldInd, 1)
                         console.log(oldData.datasets[0].data, 'checking subbed data')
                         setTickSharePair(temp)
                         setUserPortfolioData(prevPortData => (
@@ -381,7 +381,7 @@ export const Portfolio = () => {
                                                         decrement.current = true;
                                                         setModifiedGraph(!modifiedGraph)
                                                     }
-                                                    
+
                                                 }}
                                                 onFocus={(event) => event.stopPropagation()}>
                                                 <RemoveIcon />
@@ -418,7 +418,7 @@ export const Portfolio = () => {
                                 })} /> :
                             <div />}
                     </Grid>
-                    <Grid item xs/>
+                    <Grid item xs />
                 </Grid>
             </Grid>
 
