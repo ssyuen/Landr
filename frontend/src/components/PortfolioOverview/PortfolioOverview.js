@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardContent, CircularProgress, Tooltip, Typography } from '@material-ui/core'
+import { Card, CardContent, CircularProgress, Tooltip, Typography, withStyles } from '@material-ui/core'
 
 export const PortfolioOverview = (props) => {
 
@@ -34,6 +34,7 @@ export const PortfolioOverview = (props) => {
 
     const [loadingSus, setLoadingSus] = useState(true)
     const [loadingSent, setLoadingSent] = useState(true)
+
 
     useEffect(() => {
         fetch(SUS_URL, {
@@ -94,26 +95,34 @@ export const PortfolioOverview = (props) => {
     return (
 
         <Card>
-            
+
             <CardContent>
                 <Typography variant="h4">
-                    Portfolio Overview
+                    Portfolio Overview -- ${totalValue.toFixed(2)}
                 </Typography>
-                <Typography variant="h6">
+                <Typography variant="h5">
                     Sustainability Overview
                 </Typography>
-                <Typography>
-                    {loadingSus ? <CircularProgress /> : `Total Risk: ${totalRisk}`}
-                </Typography>
-                <Typography>
-                    {loadingSus ? <CircularProgress /> : `Total Controversy: ${totalControversy}/${totalControversyMax}`}
-                </Typography>
-                <Typography variant="h6">
+                <Tooltip title="The Total Risk number is an aggregate total of the sustainability risk in your portfolio. The risk is weighted based on how many shares you buy. A smaller number indicates lower risk.">
+                    <Typography variant="h6">
+                        {loadingSus ? <CircularProgress /> : `Total Risk: ${totalRisk.toFixed(2)}`}
+                    </Typography>
+                </Tooltip>
+                <Tooltip title="The Total Controversy number is an aggregate total of the controversy risk in your portfolio. The risk weighted based on how many shares you buy. A smaller number indicates lower risk.">
+                    <Typography variant="h6">
+                        {loadingSus ? <CircularProgress /> : `Total Controversy: ${totalControversy}/${totalControversyMax}`}
+                    </Typography>
+                </Tooltip>
+
+                <Typography variant="h5">
                     Sentiment Overview
                 </Typography>
-                <Typography>
-                    {loadingSent ? <CircularProgress /> : `Overall Bullish Sentiment: ${bull}`}
-                </Typography>
+                <Tooltip title="Positive sentiment gathered over a variety of news sources regarding the stock; a score of 1 is highly positive sentiment.">
+                    <Typography variant="h6">
+                        {loadingSent ? <CircularProgress /> : `Overall Bullish Sentiment: ${bull}`}
+                    </Typography>
+                </Tooltip>
+
             </CardContent>
         </Card>
     )

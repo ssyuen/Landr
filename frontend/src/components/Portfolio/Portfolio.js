@@ -351,7 +351,7 @@ export const Portfolio = () => {
                                     <Accordion>
                                         <AccordionSummary>
                                             <Typography variant="h5">
-                                                {ticker} -- {tickSharePair.[ticker]} shares
+                                                {ticker} -- {tickSharePair.[ticker]} {tickSharePair.[ticker] > 1 ? 'shares' : 'share'}
                                             </Typography>
                                             <IconButton
                                                 onClick={e => {
@@ -370,11 +370,14 @@ export const Portfolio = () => {
                                                 onClick={e => {
                                                     e.stopPropagation()
                                                     let oldCount = tickSharePair.[ticker]
-                                                    setTickSharePair({ ...tickSharePair, [ticker]: oldCount - 1 })
-                                                    updatingStock.current = true;
-                                                    updatedStock.current = ticker;
-                                                    decrement.current = true;
-                                                    setModifiedGraph(!modifiedGraph)
+                                                    if (oldCount > 1) {
+                                                        setTickSharePair({ ...tickSharePair, [ticker]: oldCount - 1 })
+                                                        updatingStock.current = true;
+                                                        updatedStock.current = ticker;
+                                                        decrement.current = true;
+                                                        setModifiedGraph(!modifiedGraph)
+                                                    }
+                                                    
                                                 }}
                                                 onFocus={(event) => event.stopPropagation()}>
                                                 <RemoveIcon />
@@ -411,6 +414,7 @@ export const Portfolio = () => {
                                 })} /> :
                             <div />}
                     </Grid>
+                    <Grid item xs/>
                 </Grid>
             </Grid>
 
