@@ -24,7 +24,7 @@
       "Net Assets": "$6,963,553,405",
       "MSCI ESG Fund Rating": "AA",
       "Why": "Exposure to companies that produce energy from solar, wind, and other renewable sources",
-      "Five Risk": "10"
+      "Five Risk": "8"
     },
     {
       "52W Range": "50.94 - 99.32",
@@ -92,7 +92,7 @@
       "Five Risk": "2"
     },
     {
-      "52W Range": " 88.78 - 154.66",
+      "52W Range": "88.78 - 154.66",
       "Name": "iShares MSCI ACWI Low Carbon Target ETF",
       "Ticker": "CRBN",
       "Price": "$154.66",
@@ -103,6 +103,19 @@
       "MSCI ESG Fund Rating": "A",
       "Why": "Obtain exposure to a broad range of global stocks that are less dependent on fossil fuels",
       "Five Risk": "3"
+    },
+    {
+      "52W Range": "17.17 - 37.73",
+      "Name": "iShares ESG Aware MSCI USA Small-Cap ETF",
+      "Ticker": "ESML",
+      "Price": "$37.73",
+      "YTD Return": "9.23%",
+      "Holdings": "1,036",
+      "P/E Ratio": "22.57",
+      "Net Assets": "$611,253,435",
+      "MSCI ESG Fund Rating": "BBB",
+      "Why": "Obtain exposure to small-cap U.S. stocks with favorable environmental, social and governance (ESG) practices",
+      "Five Risk": "6"
     }
   ]
 }
