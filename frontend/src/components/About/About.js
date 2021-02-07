@@ -50,8 +50,8 @@ export const About = () => {
                     Built for UGA Hacks 6
                 </Typography>
             </div>
-            <Grid container direction="column" justify="center" spacing={0}>
-                <Grid item xs={12}>
+            <Grid container direction="column" justify="center" alignItems="stretch" spacing={0}>
+                <Grid item>
                     <Card className={classes.card} data-aos="zoom-in-right">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -67,8 +67,6 @@ export const About = () => {
                                 </Typography>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-left">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -82,8 +80,6 @@ export const About = () => {
                                 </Typography>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-right">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -94,8 +90,6 @@ export const About = () => {
                                 </Typography>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-left">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -106,8 +100,6 @@ export const About = () => {
                             </Typography>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-right">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -118,8 +110,6 @@ export const About = () => {
                             </Typography>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-left">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -130,8 +120,6 @@ export const About = () => {
                             </Typography>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-right">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -146,22 +134,21 @@ export const About = () => {
                             </Typography>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item xs={12}>
                     <Card className={classes.card} data-aos="zoom-in-left">
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                            How would we improve Landr?
+                                How would we improve Landr?
                                 </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                            Given more time, our team would have loved to incorporate a more immersive and user centric design. 
-                            This would mean the ability to save portfolios and preferences to a cloud instance. 
-                            Furthermore, we would have loved to add creative and unique data from other APIs to really tailor 
-                            information based on the user's interests.
+                                Given more time, our team would have loved to incorporate a more immersive and user centric design.
+                                This would mean the ability to save portfolios and preferences to a cloud instance.
+                                Furthermore, we would have loved to add creative and unique data from other APIs to really tailor
+                                information based on the user's interests.
                             </Typography>
                         </CardContent>
                     </Card>
                 </Grid>
+
             </Grid>
 
         </div>
