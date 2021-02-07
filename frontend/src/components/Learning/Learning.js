@@ -48,7 +48,7 @@ export const Learning = () => {
         }
     };
 
-    const ETF_URL = `http://localhost:5000/api/portf/get_rec?monthlyIncome=${monthlyIncome}&savingsPercent=${value}&risk=${riskLevel}`
+    const ETF_URL = `/api/portf/get_rec?monthlyIncome=${monthlyIncome}&savingsPercent=${value}&risk=${riskLevel}`
     const handleSubmit = () => {
         console.log(ETF_URL)
         fetch(ETF_URL, {
