@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     },
     logo: {
         marginRight: theme.spacing(2),
-        width: 50,
-        height: 15
+        width: '150px',
+        height: '45px',
     },
     fullHeight: {
         ...theme.mixins.toolbar,
@@ -43,16 +43,17 @@ export const Navbar = () => {
 
     return (
         <div className={classes.root} >
-            <AppBar title={<Link to='/Home'>
-                                    <image className={classes.logo} src={logo}/>
-                                </Link>} position="static" style={{ background: "#212121" }}>
+            <AppBar position="static" style={{ background: "#212121" }}>
                 <Toolbar>
+                    <Link to='/Home'>
+                        <img className={classes.logo} src={logo} />
+                    </Link>
                     <Grid container alignItems="center" justify="space-between">
                         <Grid item>
                             {/* <IconButton edge="start" className={classes.logo} color="inherit" aria-label="Home"> */}
-                                
-                                
-                                {/* <Typography color="inherit" variant="title">LANDR</Typography> */}
+
+
+                            {/* <Typography color="inherit" variant="title">LANDR</Typography> */}
                             {/* </IconButton> */}
                         </Grid>
                         <Grid item>
